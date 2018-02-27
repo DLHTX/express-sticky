@@ -1,5 +1,8 @@
 var webpack = require('webpack')
 var path = require('path')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var autoprefixer = require('autoprefixer')
+
 
 module.exports = {
     entry: path.join(__dirname,'js/app/index.js'),
@@ -10,15 +13,32 @@ module.exports = {
     module:{
       rules: [
           {
-             test:  /\.(less|css)$/,
-              use:[ 'style-loader','css-loader','less-loader'],
-          }
-      ]
+             test:  /\.less$/,
+              use: ExtractTextPlugin.extract({
+                  fallback: "style-loader",
+                  use: ["css-loader", "less-loader", "postcss-loader"]
+              })
+          }]
     },
     resolve:{
         alias: {
             jquery: path.join(__dirname,"js/lib/jquery.min.js"),
-            less: path.join(__dirname, "less")
+            less: path.join(__dirname, "less"),
+            mod: path.join(__dirname, "js/mod")
         }
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery"
+        }) ,
+        new ExtractTextPlugin("../css/index.css"),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [
+                    autoprefixer(),
+                ]
+            }
+        })
+
+    ]
 };

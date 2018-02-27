@@ -1,0 +1,203 @@
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.trg {
+  background-color: #696969!important;
+  transition: all .3s !important;
+  width: 8vh!important;
+}
+.click {
+  background-color: #A8C6D7!important;
+}
+html {
+  height: 100%;
+}
+body {
+  transition: all .1s;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  background-color: #efefef;
+  min-width: 1016px;
+  height: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body #header {
+  height: 10vh;
+  background-color: #ffffff;
+  box-shadow: 0px -50px 100px 0.1px rgba(0, 0, 0, 0.2);
+}
+body #header .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 2vh;
+  color: #00d5ac;
+  font-size: 2vh;
+}
+body #header .nav div {
+  margin-right: 4vh;
+}
+body #header .nav .logo {
+  float: right;
+  font-weight: bolder;
+  margin-right: 2vh;
+  font-size: 3vh;
+  font-family: "DecoType Naskh";
+  color: #c3363eb0 b0;
+}
+body #header .nav .all {
+  margin-left: 3vh;
+  height: 6vh;
+  width: 8vh;
+  border-radius: 3px;
+  font-weight: bolder;
+  border-bottom: 3px solid #de3d3dc2;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all .3s;
+}
+body #header .nav .all:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+body #header .nav .logoin {
+  float: left;
+  margin-left: 40%;
+  background-color: #00d5ac;
+  width: 18vh;
+  height: 5vh;
+  border-radius: 30px;
+  font-weight: bolder;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  transition: all .3s;
+}
+body #header .nav .logoin:hover {
+  background-color: #05866d;
+  transition: all 0.3s;
+}
+body #header .nav .disky {
+  min-width: 5vh;
+  float: right;
+}
+body #header .icon-jia {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 8vh;
+  width: 8vh;
+  color: #00d5ac;
+  position: fixed;
+  left: 90%;
+  top: 85%;
+  font-size: 10vh;
+  cursor: pointer;
+  transition: all .4s;
+  box-shadow: 0 0px 60px 5px rgba(0, 0, 0, 0.4);
+}
+body #header .icon-jia:hover {
+  color: #089a7e;
+  transition: all .4s;
+  transform: rotate(90deg);
+}
+body #content {
+  margin: 5vh auto ;
+  width: 80%;
+  position: relative;
+}
+body #content .ps {
+  transition: all .3s !important;
+  cursor: pointer;
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  border-radius: 30px;
+  color: #f94747;
+  background: #cecece;
+  padding: 5px 10px;
+  box-shadow: 0 0 80px 2px rgba(0, 250, 154, 0.3);
+  display: block;
+}
+.box {
+  width: 20vh;
+  background-color: white;
+  border: 1px solid #d0d0d0;
+  padding: 0vh 1vh;
+  margin: 2vh;
+  float: left!important;
+  position: absolute;
+  transition: all .3s;
+}
+.box .note-head {
+  height: 5vh;
+  display: -ms-flexbox;
+  display: flex;
+  color: #888888;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid  #d0d0d0;
+  padding-left: 2vh;
+  cursor: move;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.box .note-content {
+  padding: 1vh;
+  border: none;
+  color: #696969;
+  outline: none;
+  height: 15vh;
+  border-bottom: 1px solid  #d0d0d0;
+  font-size: 1.5vh;
+}
+.box .ps {
+  background-color: #0FB492;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 30px;
+  width: 10vh;
+  height: 4vh;
+  margin: 2vh 0;
+  color: white;
+}
+.draggable {
+  box-shadow: 0 0px 60px 2px rgba(0, 0, 0, 0.3);
+  transition: all .3s;
+}
+.fadeout {
+  opacity: 0;
+  transition: all .5s;
+}

@@ -1,0 +1,138 @@
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.trg{
+  background-color: #696969!important;
+  transition: all .3s !important;
+  width:8vh!important;
+
+}
+.click{
+  background-color: #A8C6D7!important;
+}
+
+
+html{
+  height: 100%;
+}
+body {
+  transition: all .1s;
+  margin: 0;
+  padding: 0;
+  text-decoration:none;
+  list-style: none;
+  background-color: #efefef;
+  min-width:1016px;
+  height: 100%;
+  user-select:none;
+
+  #header{
+    height: 10vh;
+    background-color: #ffffff;
+    box-shadow: 0px -50px 100px 0.1px rgba(0, 0, 0, 0.2);
+
+
+
+    .nav{
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      padding:2vh;
+      color:#00d5ac;
+      font-size: 2vh;
+
+      div{
+        margin-right:4vh;
+      }
+      .logo{
+        float: right;
+        font-weight: bolder;
+        margin-right: 2vh;
+        font-size:3vh;
+        font-family:"DecoType Naskh";
+        color:#c3363eb0
+      }
+      .all{
+        margin-left: 3vh;
+        height:6vh;
+        width:8vh;
+        border-radius:3px;
+        font-weight:bolder;
+        border-bottom:3px solid #de3d3dc2;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        cursor:pointer;
+        transition:all .3s;
+        &:hover{
+        background-color:rgba(0,0,0,0.1);
+        transition:all .3s
+      }
+
+      }
+      .logoin{
+        float:left;
+        margin-left: 40%;
+        background-color:#00d5ac;
+        width:18vh;
+        height:5vh;
+        border-radius:30px;
+        font-weight:bolder;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        color:white;
+        cursor:pointer;
+        transition:all .3s;
+        &:hover{
+          background-color:#05866d;;
+          transition:all .3s
+        }
+      }
+      .disky{
+        min-width: 5vh;
+        float: right;
+      }
+    }
+
+    .icon-jia{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      border-radius:50%;
+      height:8vh;
+      width:8vh;
+      color:#00d5ac;
+      position: fixed;
+      left: 90%;
+      top: 85%;
+      font-size: 10vh;
+      cursor: pointer;
+      transition: all .4s;
+      box-shadow: 0 0px 60px 5px rgba(0, 0, 0, 0.4);
+      &:hover{
+        color:#089a7e;
+        transition: all .4s;
+        transform: rotate(90deg);
+      }
+    }
+  }
+  #content{
+    margin: 5vh auto ;
+    width:80%;
+
+    position: relative;
+    .ps{
+      transition: all .3s !important;
+      cursor: pointer;
+  }
+
+
+
+  }
+
+
+}
+
