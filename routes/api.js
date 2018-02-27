@@ -29,7 +29,7 @@ router.post('/notes/add',function (req,res,next) {
     var uid = req.session.user.id
     var username = req.session.user.username
 
-    Note.create({text:note , uid:uid , username:username}).then(function() {
+    Note.create({text:note , uid:uid , username:username}).then(function() {ls
       res.send({status:0 , username:req.session.user.username} )
       console.log(Note.createdAt)
   }).catch(function () {
