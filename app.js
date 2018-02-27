@@ -4,9 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');//使用之前必须require
+var passport = require('passport');
+
 
 var index = require('./routes/index');
 var api = require('./routes/api');
+var auth = require('./routes/auth')
 
 var app = express();
 
@@ -22,8 +26,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//以下是passport的中间件 不能忘记！
+app.use(session({secret: 'sessionsecret'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 app.use('/', index);
 app.use('/api', api);//ajax接口
+app.use('/auth',auth);//第三方认证接口
 
 
 // catch 404 and forward to error handler

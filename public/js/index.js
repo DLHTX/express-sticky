@@ -253,7 +253,6 @@ var $ = __webpack_require__(0)
 var NoteManager = (function(){
 
     function load() {
-
         $.get('/api/notes')
             .done(function(ret){
                 if(ret.status == 0){
@@ -261,11 +260,11 @@ $.each(ret.data, function(idx, article) {
                         new Note({
                             id: article.id,
                             context: article.text,
-                            username: article.username,
-                            time:article.creatime
+                            username: article.username || '神',
                         });
+                        console.log(article.username)
 
-                        $('.ps').on('mouseover',function () {
+                             $('.ps').on('mouseover',function () {
                             $(this).addClass('trg')
                             $(this).text('删除')
                         }).on('mouseout',function (e) {
@@ -289,12 +288,12 @@ $.each(ret.data, function(idx, article) {
 
     function add(){
         new Note();
+        }
 
-    }
 
     return {
         load: load,
-        add: add
+        add: add,
     }
 
 })();
@@ -334,6 +333,7 @@ var Event = __webpack_require__(2);
 var WaterFall = __webpack_require__(3);
 
 NoteManager.load();
+
 
 $('.add-note').on('click', function() {
     NoteManager.add();
@@ -380,7 +380,7 @@ Note.prototype = {
         id:'',
         $ct:$('#content'),
         context:'请输入一些东西吧！',
-        time:this.currentime
+        username:'我',
     },
     colors: [
         ['#ea9b35'],['#efb04e'],
@@ -390,49 +390,30 @@ Note.prototype = {
         ['#08aa36'],['#5191FD'],
         ['#3f78c3'],['#5591d2']
     ],
-    text:[
-        ['当神已无能为力，那便是魔渡众生'],
-        ['那是不同高度上的两片云---你在底下看上去它们重合了，事实上却永远不会相遇。'],
-        ['纵然是七海连天，也会干涸枯竭'],
-        ['这世间的种种生死离别，来了又去'],
-        ['可是 所爱的人啊 只要我曾真的爱过你 那我就永远不会忘记'],
-        ['日光照到的一切地方都有阴影'],
-        ['原来这一场千里的跋涉，只不过是来做最后一次甚至无法相见的告别。'],
-        ['君生我未生，我生君已老。'],
-        ['隔了百年的光阴，万里的迢梯,浮世肮脏，人心险诈，割裂了生和死。到哪里,再去寻找.纯白如羽的华衣,还有那张莲花般的素颜'],
-        ['我只是一个人，天地都背弃'],
-        ['梦想与荣耀同在······'],
-        ['别后相思空一水，重来回首已三生。'],
-        ['没有一颗心朝向你，没有一个人会想起你，天地之大，也无你的立锥之地'],
-
-    ],
-
-
-
     initnote:function (opts) {
         this.opts = $.extend({}, this.defaultOpts, opts||{});
         if(this.opts.id){
             this.id = this.opts.id
         }
-        console.log('init')
+
     },
 
     createnote:function () {
         var tpl = `<div class="box">
-            <div class="note-head"></div>
+            <div class="note-head"><span class="username"></span><span>的便签</span></div>
             <div class="note-content"  contenteditable="true"> </div>
             <div class="ps">未完成</div>`
         this.$note = $(tpl)
         this.$note.find('.note-content').text(this.opts.context)
+        this.$note.find('.username').text(this.opts.username);
         this.opts.$ct.append(this.$note)
-        this.$note.find('.note-head').text(myDate.getFullYear()+'年'+myDate.getMonth()+'月'+ myDate.getDate() +'日' +myDate.getSeconds()+ '秒');
+        console.log(this.opts.username)
     },
 
 
     setStyle: function () {
         var color = this.colors[Math.floor(Math.random()*12)];
         var height = Math.floor(Math.random()*20 + 12)
-        var text = this.text[Math.floor(Math.random()*12)]
         this.$note.find('.ps').css('background-color', color[0]);
         this.$note.find('.note-content').css('height', height + 'vh');
 
@@ -455,19 +436,24 @@ Note.prototype = {
             $noteCt = $note.find('.note-content'),
             $delete = $note.find('.ps'),
             $box = $note.find('.box');
+            $login = $('.logoin')
+
+
+
+
 
         $delete.on('click', function(){
+            _this.delete();
+         })
 
-           _this.delete();
-            })
+        $login.on('click', function(){
+          _this.login()
+        })
 
 
         //contenteditable没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
         $noteCt.on('focus',function () {
-            _this.text.forEach(function (e) {
-                _this.array = e
-
-            })
+            var _this = this
             if($noteCt.html() == '请输入一些东西吧！' ) $noteCt.html('')
              $noteCt.data('before', $noteCt.html());
             }).on('blur paste',function () {
@@ -516,13 +502,13 @@ Note.prototype = {
     },
 
     add: function (msg){
-        console.log('addd...');
         var self = this;
-        $.post('/api/notes/add', {note: msg ,time:this.opts.time})
+        $.post('/api/notes/add', {note: msg })
             .done(function(ret){
+                self.name = ret.username
                 if(ret.status === 0){
                     Toast('添加成功!');
-                }else{
+                    }else{
                     self.$note.remove();
                     Event.fire('waterfall')
                     Toast(ret.errorMsg);
@@ -537,13 +523,27 @@ Note.prototype = {
             .done(function(ret){
                 if(ret.status === 0){
                     self.$note.remove();
+                    Toast('删除成功！');
                     Event.fire('waterfall')
                 }else{
                     Toast(ret.errorMsg);
                 }
             });
-        }
+        },
+
+    login:function () {
+       location.href='auth/github'
     }
+
+
+
+
+    }
+
+
+
+
+
 
 
 

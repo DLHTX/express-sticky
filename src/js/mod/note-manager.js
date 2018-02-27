@@ -7,7 +7,6 @@ var $ = require('jquery')
 var NoteManager = (function(){
 
     function load() {
-
         $.get('/api/notes')
             .done(function(ret){
                 if(ret.status == 0){
@@ -15,11 +14,11 @@ $.each(ret.data, function(idx, article) {
                         new Note({
                             id: article.id,
                             context: article.text,
-                            username: article.username,
-                            time:article.creatime
+                            username: article.username || '神',
                         });
+                        console.log(article.username)
 
-                        $('.ps').on('mouseover',function () {
+                             $('.ps').on('mouseover',function () {
                             $(this).addClass('trg')
                             $(this).text('删除')
                         }).on('mouseout',function (e) {
@@ -43,12 +42,12 @@ $.each(ret.data, function(idx, article) {
 
     function add(){
         new Note();
+        }
 
-    }
 
     return {
         load: load,
-        add: add
+        add: add,
     }
 
 })();

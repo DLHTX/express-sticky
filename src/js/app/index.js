@@ -7,6 +7,7 @@ var WaterFall = require('../mod/waterfall.js');
 
 NoteManager.load();
 
+
 $('.add-note').on('click', function() {
     NoteManager.add();
     WaterFall.init($('#content'));

@@ -16,6 +16,11 @@
 
 html{
   height: 100%;
+
+}
+*{
+  text-decoration: none;
+  color:inherit;
 }
 body {
   transition: all .1s;
@@ -32,27 +37,57 @@ body {
     height: 10vh;
     background-color: #ffffff;
     box-shadow: 0px -50px 100px 0.1px rgba(0, 0, 0, 0.2);
-
-
-
+    color:#00d5ac;
+    font-size: 2vh;
+    position: relative;
     .nav{
-      display:flex;
-      justify-content: center;
-      align-items:center;
-      padding:2vh;
-      color:#00d5ac;
-      font-size: 2vh;
-
       div{
         margin-right:4vh;
       }
       .logo{
-        float: right;
-        font-weight: bolder;
-        margin-right: 2vh;
-        font-size:3vh;
-        font-family:"DecoType Naskh";
-        color:#c3363eb0
+
+        .icon-note{
+          font-size:5vh;
+          position:absolute;
+          font-weight: bolder;
+          margin-right: 2vh;
+          font-family: "DecoType Naskh";
+          color: #c3363eb0;
+          transform:translateY(50%);
+          left:6%;
+        }
+      }
+
+      .img{
+        width: 2vh;
+        height: 2vh;
+        position:absolute;
+        top:50%;
+        transform: translateY(-50%);
+        left:80%;
+      }
+      .username{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 83%;
+      }
+      .logout{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 92%;
+        background-color:#24d5ab;
+        color:white;
+        min-width:5vh;
+        padding:0.5vh 0.6vh;
+        border-radius:30px;
+        text-align:center;
+        transition:all .3s;
+        &:hover{
+          background-color:#da4a4af0;
+          transition:all .3s;
+        }
       }
       .all{
         margin-left: 3vh;
@@ -66,6 +101,9 @@ body {
         align-items: center;
         cursor:pointer;
         transition:all .3s;
+        transform:translateY(32%);
+        left:25%;
+        position: absolute;
         &:hover{
         background-color:rgba(0,0,0,0.1);
         transition:all .3s
@@ -73,8 +111,9 @@ body {
 
       }
       .logoin{
-        float:left;
-        margin-left: 40%;
+        position:absolute;
+        transform:translateY(50%);
+        left:80%;
         background-color:#00d5ac;
         width:18vh;
         height:5vh;
@@ -86,14 +125,19 @@ body {
         color:white;
         cursor:pointer;
         transition:all .3s;
+
         &:hover{
           background-color:#05866d;;
           transition:all .3s
         }
       }
       .disky{
-        min-width: 5vh;
-        float: right;
+        position:absolute;
+        transform: translateY(50%);
+        left: 10%;
+        width:18vh;
+        height:5vh;
+
       }
     }
 
