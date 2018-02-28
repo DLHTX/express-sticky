@@ -42,7 +42,7 @@ var Note = sequelize.define('note', {
 //         console.log(users)
 //     })//查找
 //
-    Note.findAll({raw: true , where:{uid:21312}  },).then(function(articles) {
+    Note.findAll({raw: true , where:{uid:21312}}).then(function(articles) {
       console.log(articles)
     })
 //查找真实数据

@@ -32,17 +32,17 @@ passport.use(new GitHubStrategy({
 
 
 
-passport.use(new qqStrategy({
-        clientID: client_id,
-        clientSecret: client_secret,
-        callbackURL: "http://127.0.0.1:3000/auth/qq/callback"
-    },
-    function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ qqId: profile.id }, function (err, user) {
-            return done(err, user);
-        });
-    }
-));//qq认证
+// passport.use(new qqStrategy({
+//         clientID: client_id,
+//         clientSecret: client_secret,
+//         callbackURL: "http://127.0.0.1:3000/auth/qq/callback"
+//     },
+//     function(accessToken, refreshToken, profile, done) {
+//         User.findOrCreate({ qqId: profile.id }, function (err, user) {
+//             return done(err, user);
+//         });
+//     }
+// ));//qq认证
 
 
 

@@ -22,7 +22,7 @@
     "passport-github": "^1.1.0",
     "passport-jirengu": "^1.0.0",
     "passport-qq": "^0.1.0",
-    "sequelize": "^3.30.2",
+    "sequelize": "^3.31.2",
     "serve-favicon": "~2.3.2",
     "session": "^0.1.0",
     "sqlite3": "^3.1.13",
