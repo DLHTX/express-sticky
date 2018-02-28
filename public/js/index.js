@@ -354,6 +354,8 @@ Event.on('waterfall', function(){
 
 
 
+
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -378,7 +380,7 @@ function Note(opts) {
 Note.prototype = {
     defaultOpts:{
         id:'',
-        $ct:$('#content'),
+        $ct: $('#content').length>0?$('#content'):$('body'),
         context:'请输入一些东西吧！',
         username:'我',
     },
@@ -415,7 +417,7 @@ Note.prototype = {
         var color = this.colors[Math.floor(Math.random()*12)];
         var height = Math.floor(Math.random()*20 + 12)
         this.$note.find('.ps').css('background-color', color[0]);
-        this.$note.find('.note-content').css('height', height + 'vh');
+        this.$note.find('.note-content').css('min-height', height + 'vh');
 
     },
     
@@ -437,9 +439,7 @@ Note.prototype = {
             $delete = $note.find('.ps'),
             $box = $note.find('.box');
             $login = $('.logoin')
-
-
-
+            $qqlogin = $('.qq-logoin')
 
 
         $delete.on('click', function(){
@@ -450,20 +450,23 @@ Note.prototype = {
           _this.login()
         })
 
+        $qqlogin.on('click', function(){
+            _this.qqlogin()
+        })
+
 
         //contenteditable没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
         $noteCt.on('focus',function () {
-            var _this = this
-            if($noteCt.html() == '请输入一些东西吧！' ) $noteCt.html('')
-             $noteCt.data('before', $noteCt.html());
+            if($noteCt.text() == '请输入一些东西吧！' ) $noteCt.text('')
+             $noteCt.data('before', $noteCt.text());
             }).on('blur paste',function () {
-            if( $noteCt.data('before') != $noteCt.html() ) {
-                $noteCt.data('before',$noteCt.html());
+            if( $noteCt.data('before') != $noteCt.text() ) {
+                $noteCt.data('before',$noteCt.text());
                 _this.setLayout();
                 if(_this.id){
-                    _this.edit($noteCt.html())
+                    _this.edit($noteCt.text())
                 }else{
-                    _this.add($noteCt.html())
+                    _this.add($noteCt.text())
                 }
             }
         });
@@ -505,7 +508,6 @@ Note.prototype = {
         var self = this;
         $.post('/api/notes/add', {note: msg })
             .done(function(ret){
-                self.name = ret.username
                 if(ret.status === 0){
                     Toast('添加成功!');
                     }else{
@@ -519,11 +521,11 @@ Note.prototype = {
 
     delete: function(){
         var self = this;
-        $.post('/api/notes/delete', {id: this.id})
+        $.post('/api/notes/delete', {id: this.id })
             .done(function(ret){
                 if(ret.status === 0){
-                    self.$note.remove();
                     Toast('删除成功！');
+                    self.$note.remove();
                     Event.fire('waterfall')
                 }else{
                     Toast(ret.errorMsg);
@@ -533,6 +535,9 @@ Note.prototype = {
 
     login:function () {
        location.href='auth/github'
+    },
+    qqlogin:function () {
+        location.href='auth/qq'
     }
 
 

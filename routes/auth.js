@@ -4,7 +4,7 @@ var Note = require('../models/note.js').Note
 
 var passport = require('passport');//passport模块专门处理登录
 var GitHubStrategy = require('passport-github').Strategy;
-
+var qqStrategy = require('passport-qq').Strategy;
 
 /* GET auth */
 
@@ -28,7 +28,23 @@ passport.use(new GitHubStrategy({
     function(accessToken, refreshToken, profile, done) {
         done(null, profile);
     }
-));
+));//github认证
+
+
+
+passport.use(new qqStrategy({
+        clientID: client_id,
+        clientSecret: client_secret,
+        callbackURL: "http://127.0.0.1:3000/auth/qq/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+        User.findOrCreate({ qqId: profile.id }, function (err, user) {
+            return done(err, user);
+        });
+    }
+));//qq认证
+
+
 
 
 router.get('/github',
@@ -46,6 +62,8 @@ router.get('/github/callback',
         };
         res.redirect('/');
     });
+
+
 
 router.get('/logout', function(req, res){
     req.session.destroy();

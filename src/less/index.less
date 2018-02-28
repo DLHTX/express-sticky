@@ -1,182 +1,229 @@
+
+/*@media screen and (min-width: 600px) { 当屏幕尺寸大于600px时，应用下面的CSS样式*/
+
+  .trg{
+    background-color: #696969!important;
+    transition: all .3s !important;
+    width:8vh!important;
+
+  }
+  .click{
+    background-color: #A8C6D7!important;
+  }
+
+
+  html{
+    height: 100%;
+
+  }
+  *{
+    text-decoration: none;
+    color:inherit;
+  }
+  body {
+    transition: all .1s;
+    margin: 0;
+    padding: 0;
+    text-decoration:none;
+    list-style: none;
+    background-color: #efefef;
+    min-width:1016px;
+    min-height: 429px;
+    height: 100%;
+    user-select:none;/*文本不可选中*/
+
+    #header{
+      height: 10vh;
+      background-color: #ffffff;
+      box-shadow: 0px -50px 100px 0.1px rgba(0, 0, 0, 0.2);
+      color:#00d5ac;
+      font-size: 2vh;
+      position: relative;
+      .nav{
+        div{
+          margin-right:4vh;
+        }
+
+
+
+        .title{
+          font-size: 2vh;
+          position: absolute;
+          margin-right: 2vh;
+          color: #c3363eb0;
+          top:50%;
+          transform:translateY(-50%);
+          left: 10%;
+          font-weight: bolder;
+
+        }
+        .logo{
+
+          .icon-note{
+            font-size:5vh;
+            position:absolute;
+            font-weight: bolder;
+            margin-right: 2vh;
+            font-family: "DecoType Naskh";
+            color: #c3363eb0;
+            transform:translateY(50%);
+            left:6%;
+          }
+        }
+
+        .img{
+          width: 2vh;
+          height: 2vh;
+          position:absolute;
+          top:50%;
+          transform: translateY(-50%);
+          left:80%;
+        }
+        .username{
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 83%;
+        }
+        .logout{
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 92%;
+          background-color:#24d5ab;
+          color:white;
+          min-width:5vh;
+          padding:0.5vh 0.6vh;
+          border-radius:30px;
+          text-align:center;
+          transition:all .3s;
+          &:hover{
+            background-color:#da4a4af0;
+            transition:all .3s;
+          }
+        }
+        .all{
+          margin-left: 3vh;
+          height:6vh;
+          width:8vh;
+          border-radius:3px;
+          font-weight:bolder;
+          border-bottom:3px solid #de3d3dc2;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          cursor:pointer;
+          transition:all .3s;
+          transform:translateY(32%);
+          left:25%;
+          position: absolute;
+          &:hover{
+            background-color:rgba(0,0,0,0.1);
+            transition:all .3s
+          }
+
+        }
+        .logoin{
+          position:absolute;
+          transform:translateY(50%);
+          left:85%;
+          background-color:#00d5ac;
+          width:18vh;
+          height:5vh;
+          border-radius:30px;
+          font-weight:bolder;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          color:white;
+          cursor:pointer;
+          transition:all .3s;
+          &:hover{
+            background-color:#05866d;;
+            transition:all .3s
+          }
+        }
+
+        .qq-logoin {
+          position: absolute;
+          transform: translateY(50%);
+          left: 75%;
+          background-color: #00d5ac;
+          width: 10vh;
+          height: 5vh;
+          border-radius: 30px;
+          font-weight: bolder;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          cursor: pointer;
+          transition: all .3s;
+          &:hover{
+            background-color:#05866d;;
+            transition:all .3s
+          }
+        }
+        .disky{
+          position:absolute;
+          transform: translateY(50%);
+          left: 10%;
+          width:18vh;
+          height:5vh;
+
+        }
+      }
+
+      .icon-jia{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border-radius:50%;
+        height:8vh;
+        width:8vh;
+        color:#00d5ac;
+        position: fixed;
+        left: 90%;
+        top: 85%;
+        font-size: 10vh;
+        cursor: pointer;
+        transition: all .4s;
+        box-shadow: 0 0px 60px 5px rgba(0, 0, 0, 0.4);
+        &:hover{
+          color:#089a7e;
+          transition: all .4s;
+          transform: rotate(90deg);
+        }
+      }
+    }
+    #content{
+      margin: 5vh auto ;
+      width:80%;
+
+
+      position: relative;
+      .ps{
+        transition: all .3s !important;
+        cursor: pointer;
+      }
+
+
+
+    }
+
+
+  }
+
+
+
+
+
 .clearfix::after{
   content: '';
   display: block;
   clear: both;
 }
-.trg{
-  background-color: #696969!important;
-  transition: all .3s !important;
-  width:8vh!important;
-
-}
-.click{
-  background-color: #A8C6D7!important;
-}
 
 
-html{
-  height: 100%;
-
-}
-*{
-  text-decoration: none;
-  color:inherit;
-}
-body {
-  transition: all .1s;
-  margin: 0;
-  padding: 0;
-  text-decoration:none;
-  list-style: none;
-  background-color: #efefef;
-  min-width:1016px;
-  height: 100%;
-  user-select:none;
-
-  #header{
-    height: 10vh;
-    background-color: #ffffff;
-    box-shadow: 0px -50px 100px 0.1px rgba(0, 0, 0, 0.2);
-    color:#00d5ac;
-    font-size: 2vh;
-    position: relative;
-    .nav{
-      div{
-        margin-right:4vh;
-      }
-      .logo{
-
-        .icon-note{
-          font-size:5vh;
-          position:absolute;
-          font-weight: bolder;
-          margin-right: 2vh;
-          font-family: "DecoType Naskh";
-          color: #c3363eb0;
-          transform:translateY(50%);
-          left:6%;
-        }
-      }
-
-      .img{
-        width: 2vh;
-        height: 2vh;
-        position:absolute;
-        top:50%;
-        transform: translateY(-50%);
-        left:80%;
-      }
-      .username{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 83%;
-      }
-      .logout{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 92%;
-        background-color:#24d5ab;
-        color:white;
-        min-width:5vh;
-        padding:0.5vh 0.6vh;
-        border-radius:30px;
-        text-align:center;
-        transition:all .3s;
-        &:hover{
-          background-color:#da4a4af0;
-          transition:all .3s;
-        }
-      }
-      .all{
-        margin-left: 3vh;
-        height:6vh;
-        width:8vh;
-        border-radius:3px;
-        font-weight:bolder;
-        border-bottom:3px solid #de3d3dc2;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        cursor:pointer;
-        transition:all .3s;
-        transform:translateY(32%);
-        left:25%;
-        position: absolute;
-        &:hover{
-        background-color:rgba(0,0,0,0.1);
-        transition:all .3s
-      }
-
-      }
-      .logoin{
-        position:absolute;
-        transform:translateY(50%);
-        left:80%;
-        background-color:#00d5ac;
-        width:18vh;
-        height:5vh;
-        border-radius:30px;
-        font-weight:bolder;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        color:white;
-        cursor:pointer;
-        transition:all .3s;
-
-        &:hover{
-          background-color:#05866d;;
-          transition:all .3s
-        }
-      }
-      .disky{
-        position:absolute;
-        transform: translateY(50%);
-        left: 10%;
-        width:18vh;
-        height:5vh;
-
-      }
-    }
-
-    .icon-jia{
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      border-radius:50%;
-      height:8vh;
-      width:8vh;
-      color:#00d5ac;
-      position: fixed;
-      left: 90%;
-      top: 85%;
-      font-size: 10vh;
-      cursor: pointer;
-      transition: all .4s;
-      box-shadow: 0 0px 60px 5px rgba(0, 0, 0, 0.4);
-      &:hover{
-        color:#089a7e;
-        transition: all .4s;
-        transform: rotate(90deg);
-      }
-    }
-  }
-  #content{
-    margin: 5vh auto ;
-    width:80%;
-
-    position: relative;
-    .ps{
-      transition: all .3s !important;
-      cursor: pointer;
-  }
-
-
-
-  }
-
-
-}
+/*以下为播放器样式*/
 

@@ -15,8 +15,10 @@ router.get('/notes', function(req, res, next) {
             uid:req.session.user.id
         }
     }
-    Note.findAll(query).then(function (notes) {
+    Note.findAll({raw:true}).then(function (notes) {
         res.send({status:0,data: notes});
+    }).catch(function () {
+        res.send({status:1 , errorMsg:'数据库出错2'})
     })
 });
 
@@ -29,11 +31,11 @@ router.post('/notes/add',function (req,res,next) {
     var uid = req.session.user.id
     var username = req.session.user.username
 
-    Note.create({text:note , uid:uid , username:username}).then(function() {ls
+    Note.create({text:note , uid:uid , username:username}).then(function() {
       res.send({status:0 , username:req.session.user.username} )
       console.log(Note.createdAt)
   }).catch(function () {
-      res.send({status:1 , errorMsg:'数据库出错'})
+      res.send({status:1 , errorMsg:'数据库出错(添加)'})
   })
 })
 
@@ -42,9 +44,12 @@ router.post('/notes/edit',function (req,res,next) {
     if(!req.session.user){
         return res.send({status:1 , errorMsg:'编辑失败，请先登录'})
     }
-    var uid = req.session.user.ui
-  Note.update({text:req.body.note},{where:{id:req.body.id, uid:uid}}).then(function () {
+    var uid = req.session.user.id
+    var username = req.session.user.username
+  Note.update({text:req.body.note},{where:{id:req.body.id, username:username}}).then(function () {
      res.send({status:0})
+  }).catch(function () {
+      res.send({status:1 , errorMsg:'数据库出错(编辑)'})
   })
 })
 

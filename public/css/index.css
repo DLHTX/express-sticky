@@ -1,8 +1,4 @@
-.clearfix::after {
-  content: '';
-  display: block;
-  clear: both;
-}
+/*@media screen and (min-width: 600px) { 当屏幕尺寸大于600px时，应用下面的CSS样式*/
 .trg {
   background-color: #696969!important;
   transition: all .3s !important;
@@ -26,11 +22,13 @@ body {
   list-style: none;
   background-color: #efefef;
   min-width: 1016px;
+  min-height: 429px;
   height: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  /*文本不可选中*/
 }
 body #header {
   height: 10vh;
@@ -42,6 +40,16 @@ body #header {
 }
 body #header .nav div {
   margin-right: 4vh;
+}
+body #header .nav .title {
+  font-size: 2vh;
+  position: absolute;
+  margin-right: 2vh;
+  color: #c3363eb0;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
+  font-weight: bolder;
 }
 body #header .nav .logo .icon-note {
   font-size: 5vh;
@@ -110,7 +118,7 @@ body #header .nav .all:hover {
 body #header .nav .logoin {
   position: absolute;
   transform: translateY(50%);
-  left: 80%;
+  left: 85%;
   background-color: #00d5ac;
   width: 18vh;
   height: 5vh;
@@ -127,6 +135,29 @@ body #header .nav .logoin {
   transition: all .3s;
 }
 body #header .nav .logoin:hover {
+  background-color: #05866d;
+  transition: all 0.3s;
+}
+body #header .nav .qq-logoin {
+  position: absolute;
+  transform: translateY(50%);
+  left: 75%;
+  background-color: #00d5ac;
+  width: 10vh;
+  height: 5vh;
+  border-radius: 30px;
+  font-weight: bolder;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  transition: all .3s;
+}
+body #header .nav .qq-logoin:hover {
   background-color: #05866d;
   transition: all 0.3s;
 }
@@ -170,6 +201,12 @@ body #content .ps {
   transition: all .3s !important;
   cursor: pointer;
 }
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*以下为播放器样式*/
 .toast {
   position: fixed;
   left: 50%;
@@ -205,6 +242,7 @@ body #content .ps {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-size: 1.5vh;
 }
 .box .note-head .username {
   color: #ec7373;
@@ -214,7 +252,6 @@ body #content .ps {
   border: none;
   color: #696969;
   outline: none;
-  height: 15vh;
   border-bottom: 1px solid  #d0d0d0;
   font-size: 1.5vh;
 }
