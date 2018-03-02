@@ -511,7 +511,6 @@ Note.prototype = {
             $noteCt.data('before', $noteCt.text());
         })
         $ps.on('click',function () {
-            $noteCt.data('before', $noteCt.text(''));
             if( $noteCt.data('before') != $noteCt.text() ) {
                     $noteCt.data('before',$noteCt.text());
                     _this.setLayout();
