@@ -15,15 +15,16 @@ $.each(ret.data, function(idx, article) {
                             id: article.id,
                             context: article.text,
                             username: article.username || '神',
+                            star:article.star
                         });
                         console.log(article.username)
 
                              $('.ps').on('mouseover',function () {
                             $(this).addClass('trg')
-                            $(this).text('删除')
+
                         }).on('mouseout',function (e) {
                             $(this).removeClass('trg')
-                            $(this).text('未完成')
+
                         })//注册监听
 
                     });

@@ -21,6 +21,7 @@ Note.prototype = {
         $ct: $('#content').length>0?$('#content'):$('body'),
         context:'请输入一些东西吧！',
         username:'我',
+        star:undefined
     },
     colors: [
         ['#ea9b35'],['#efb04e'],
@@ -40,14 +41,27 @@ Note.prototype = {
 
     createnote:function () {
         var tpl = `<div class="box">
-            <div class="note-head"><span class="username"></span><span>的便签</span></div>
+            <div class="note-head"> <span class="username"></span><span>的便签</span>
+            <i class="iconfont icon-del"></i>
+            </div>
             <div class="note-content"  contenteditable="true"> </div>
-            <div class="ps">未完成</div>`
+            <ul class="starbox clearfix">
+                <li class='star iconfont icon-star select'></li>
+                <li class='star iconfont icon-star' ></li>
+                <li class='star iconfont icon-star'></li>
+                <li class='star iconfont icon-star'></li>
+                <li class='star iconfont icon-star'></li>
+            </ul>
+            <div class="ps"><i class="iconfont icon-gou"></i></div>
+            `
         this.$note = $(tpl)
         this.$note.find('.note-content').text(this.opts.context)
         this.$note.find('.username').text(this.opts.username);
+        this.$note.find('.starbox .star').eq(this.opts.star).nextAll().removeClass('select')
+        console.log(this.opts.star)
+        this.$note.find('.starbox .star').eq(this.opts.star).addClass('select').prevAll().addClass('select')
         this.opts.$ct.append(this.$note)
-        console.log(this.opts.username)
+
     },
 
 
@@ -58,7 +72,7 @@ Note.prototype = {
         this.$note.find('.note-content').css('min-height', height + 'vh');
 
     },
-    
+
     setLayout:function () {
         var _this = this
         if(_this.clk){
@@ -68,16 +82,33 @@ Note.prototype = {
             Event.fire('waterfall')
         },100)
     },
-    
+
     bindEvent:function () {
         var _this = this,
             $note = this.$note
+            $ps = $note.find('.ps')
             $noteHead = $note.find('.note-head'),
             $noteCt = $note.find('.note-content'),
-            $delete = $note.find('.ps'),
+            $delete = $note.find('.icon-del'),
             $box = $note.find('.box');
             $login = $('.logoin')
             $qqlogin = $('.qq-logoin')
+            $star = $note.find('.starbox .star')
+
+
+
+
+
+
+        $star.on('click',function(){
+            _this.index = $(this).index()
+            console.log($(this).index())
+            $(this).nextAll().removeClass('select')
+            $(this).addClass('select').prevAll().addClass('select')
+            // _this.editstar($(this).index())
+ })
+
+
 
 
         $delete.on('click', function(){
@@ -93,21 +124,46 @@ Note.prototype = {
         })
 
 
-        //contenteditable没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
+        // contenteditable没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
+        // $noteCt.on('focus',function () {
+        //     if($noteCt.text() == '请输入一些东西吧！' ) $noteCt.text('')
+        //      $noteCt.data('before', $noteCt.text());
+        //     }).on('blur paste',function () {
+        //     if( $noteCt.data('before') != $noteCt.text() ) {
+        //         $noteCt.data('before',$noteCt.text());
+        //         _this.setLayout();
+        //         if(_this.id){
+        //             _this.edit($noteCt.text())
+        //         }else{
+        //
+        //             _this.add($noteCt.text(),_this.index)
+        //         }
+        //     }
+        // });
+        //
+        // contenteditable没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
         $noteCt.on('focus',function () {
             if($noteCt.text() == '请输入一些东西吧！' ) $noteCt.text('')
-             $noteCt.data('before', $noteCt.text());
-            }).on('blur paste',function () {
+            $noteCt.data('before', $noteCt.text());
+        })
+        $ps.on('click',function () {
+            $noteCt.data('before', $noteCt.text(''));
             if( $noteCt.data('before') != $noteCt.text() ) {
-                $noteCt.data('before',$noteCt.text());
-                _this.setLayout();
-                if(_this.id){
-                    _this.edit($noteCt.text())
-                }else{
-                    _this.add($noteCt.text())
+                    $noteCt.data('before',$noteCt.text());
+                    _this.setLayout();
+                    if(_this.id){
+                        _this.edit($noteCt.text(),_this.index||0)
+                    }else{
+                        _this.add($noteCt.text(),_this.index||0)
+                        console.log(_this.index)
+                    }
                 }
-            }
-        });
+
+        })
+
+
+
+
 
         //设置笔记的移动
         $noteHead.on('mousedown', function(e){
@@ -127,12 +183,13 @@ Note.prototype = {
         },
 
 
-    edit: function (msg) {
+    edit: function (msg,index) {
         var self = this;
 
         $.post('/api/notes/edit',{
             id: this.id,
-            note: msg
+            note: msg,
+            star:index
         }).done(function(ret){
             if(ret.status === 0){
                 Toast('编辑完成!');
@@ -142,11 +199,27 @@ Note.prototype = {
         })
     },
 
-    add: function (msg){
+    // editstar: function (index) {
+    //   $.post('api/notes/editstar',{star:index})
+    //       .done(function (ret) {
+    //           if(ret.status === 0){
+    //               Toast('编辑星星成功')
+    //               console.log(ret.star)
+    //           }else{
+    //               Toast(ret.errorMsg)
+    //           }
+    //       })
+    // },
+    //
+
+
+    add: function (msg,index){
         var self = this;
-        $.post('/api/notes/add', {note: msg })
+        console.log(index)
+        $.post('/api/notes/add', {note: msg , star:index})
             .done(function(ret){
                 if(ret.status === 0){
+                    console.log(ret.star)
                     Toast('添加成功!');
                     }else{
                     self.$note.remove();

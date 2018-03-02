@@ -68,7 +68,7 @@ router.get('/github/callback',
 router.get('/logout', function(req, res){
     req.session.destroy();
     res.redirect('/');
-})
+});
 
 
 module.exports = router;

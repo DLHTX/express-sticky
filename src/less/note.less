@@ -1,11 +1,15 @@
+*{
+    list-style: none !important;
+}
 .box{
-  width: 20vh;
-  background-color: white;
-  border: 1px solid #d0d0d0;
-  padding:0vh 1vh;
-  margin: 2vh;
-  float:left!important;
-  position:absolute;
+      width: 20vh;
+      background-color: white;
+      border: 1px solid #d0d0d0;
+      padding:0vh 2vh;
+      margin: 2vh;
+      float:left!important;
+      position:absolute;
+
   .note-head{
     height: 5vh;
     display: flex;
@@ -16,11 +20,13 @@
     cursor:move;
     user-select:none;
     font-size:1.5vh;
+      position: relative;
     .username{
       color:#ec7373;
     }
   }
   .note-content{
+      line-height:2.5vh;
     padding: 1vh;
     border: none;
     color: #696969;
@@ -28,7 +34,33 @@
     border-bottom: 1px solid  #d0d0d0;
     font-size:1.5vh;
   }
-  .ps{
+
+
+    .starbox{
+       display:inline-block;
+    }
+    .starbox .star{
+        float:left;
+        color:#b1b1b1;;
+        font-size:30px !important;
+        cursor: pointer;
+    }
+    .select{
+        color:#ff4b4e !important;
+    }
+
+    .clearfix::after{
+        content:'';
+        display:block;
+        clear:both;
+    }
+
+
+
+
+
+
+    .ps{
     background-color: #0FB492;
     display:flex;
     justify-content: center;
@@ -36,10 +68,25 @@
     border-radius:30px;
     width:10vh;
     height:4vh;
-    margin:2vh 0;
-    color:white
+    margin: 0 0 2vh 0;
+    color:white;
+        .icon-gou{
+        color:white;
+    }
+    }
+    .icon-del{
+        color: #777777;
+        position:absolute;
+        left:90%;
+        cursor:pointer;
+        font-size:2vh;
+        transition:all .3s;
+        &:hover{
+            color: #ff4b4e;
+            transition:all .3s;
+        }
+    }
 
-  }
   transition:all .3s;
 
 

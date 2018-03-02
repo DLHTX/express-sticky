@@ -14,10 +14,10 @@ $('.add-note').on('click', function() {
 
     $('.ps').on('mouseover',function () {
         $(this).addClass('trg')
-        $(this).text('删除')
+
     }).on('mouseout',function (e) {
         $(this).removeClass('trg')
-        $(this).text('未完成')
+
     })
 })
 

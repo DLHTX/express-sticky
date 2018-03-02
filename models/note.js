@@ -27,11 +27,14 @@ var Note = sequelize.define('note', {
     },
     username:{
         type: Sequelize.STRING
+    },
+    star:{
+        type: Sequelize.INTEGER //整数
     }
 });//定义一个模型 相对于数据库里面的一个表 空数据库 必须创建表结构
 
 // Note.sync({force:true})
-//
+// //
 // Note.create({text:'欢迎大家来到这里做客！赶快登录添加属于你的便签吧~' })
 //重置一次数据库
 //  Note.sync().then(function () {
@@ -42,7 +45,7 @@ var Note = sequelize.define('note', {
 //         console.log(users)
 //     })//查找
 //
-    Note.findAll({raw: true , where:{uid:21312}}).then(function(articles) {
+    Note.findAll({raw: true}).then(function(articles) {
       console.log(articles)
     })
 //查找真实数据

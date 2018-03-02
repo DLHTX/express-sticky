@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, inital-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>便利贴</title>
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_573322_2y2nrsf98x91kyb9.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_560878_uxig1w9izfr.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_573322_t2qo0dj3vmahh0k9.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_573322_g39ijbr2p7y3z0k9.css">
+
 
 </head>
 <body>
@@ -15,13 +16,13 @@
     <div class="nav clearfix">
     <div class="logo"><i class="iconfont icon-note"></i></div>
         <span class="title">小小便签</span>
-        
+
 
         <div class="all">全部</div>
 
         <% if(isLogin){%>
-        <div ><img src="<%= user.avatar %>" class="img" alt=""></div>
-        <div class="username"> <%= user.username  %></div>
+        <div class="userbox"><img src="<%= user.avatar %>" class="img" alt="">
+        <div class="username"> <%= user.username  %></div></div>
         <div class="logout"><a href="/auth/logout">注销</a></div>
         <i title="添加笔记"  class=" add-note iconfont icon-jia"></i>
         <%}else{ %>
