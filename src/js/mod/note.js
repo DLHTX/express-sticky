@@ -45,13 +45,13 @@ Note.prototype = {
             <i class="iconfont icon-del"></i>
             </div>
             <div class="note-content"  contenteditable="true"> </div>
-            <ul class="starbox clearfix">
-                <li class='star iconfont icon-star select'></li>
-                <li class='star iconfont icon-star' ></li>
-                <li class='star iconfont icon-star'></li>
-                <li class='star iconfont icon-star'></li>
-                <li class='star iconfont icon-star'></li>
-            </ul>
+            <div class="starbox clearfix">
+                <span class='star iconfont icon-star select'></span>
+                <span class='star iconfont icon-star' ></span>
+                <span class='star iconfont icon-star'></span>
+                <span class='star iconfont icon-star'></span>
+                <span class='star iconfont icon-star'></span>
+            </div>
             <div class="ps"><i class="iconfont icon-gou"></i></div>
             `
         this.$note = $(tpl)

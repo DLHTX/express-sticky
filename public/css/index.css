@@ -273,6 +273,7 @@ body #content .ps {
 }
 .box .starbox {
   display: inline-block;
+  margin: 1vh 0;
 }
 .box .starbox .star {
   float: left;
