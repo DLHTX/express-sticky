@@ -221,6 +221,7 @@ body #content .ps {
 .toast {
   position: fixed;
   left: 50%;
+  transform: translateX(-50%);
   bottom: 20px;
   border-radius: 30px;
   color: #f94747;
