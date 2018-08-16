@@ -22,7 +22,7 @@ passport.deserializeUser(function(obj, done) {
 
 passport.use(new GitHubStrategy({
         clientID: 'f1d9549ce4812e7be470',
-        clientSecret: 'baa427b5004568850b9d3aafb700190a78b2222b',
+        clientSecret: 'efdc1f131202fe30aa56b1eb04b64caef1a2526b',
         callbackURL: "http://47.91.156.35:5000/auth/github/callback"
     },
     function(accessToken, refreshToken, profile, done) {
